@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta charset="UTF-8">
+    <title>医院药品管理系统</title>
+    <link rel="shortcut icon" href="#"/>
+</head>
+<link rel="stylesheet" th:href="@{/static/layui/css/layui.css}" media="all">
+<link rel="stylesheet" th:href="@{/static/admin/style.css}" media="all">
+<script th:src="@{/static/layui/layui.js}"></script>
+<style>
+    body {
+        background-image: url("/static/images/bg.jpg");
+        height: 100%;
+        width: 100%;
+    }
+
+    input:-webkit-autofill {
+        -webkit-box-shadow: inset 0 0 0 1000px #fff;
+        background-color: transparent;
+    }
+
+    .layui-icon-username {
+        color: #a78369 !important;
+    }
+
+    .layui-icon-username:hover {
+        color: #9dadce !important;
+    }
+
+    .layui-icon-password {
+        color: #a78369 !important;
+    }
+
+    .layui-icon-password:hover {
+        color: #9dadce !important;
+    }
+
+    .admin-icon {
+        margin-left: 260px;
+        margin-top: 2px;
+        font-size: 30px;
+    }
+
+    i {
+        position: absolute;
+    }
+
+    .admin-header {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 40px
+    }
+</style>
+<body>
+<div class="login-main">
+    <header class="admin-header">
+        药品管理系统
+    </header>
+    <form class="layui-form">
+        <div class="layui-input-inline">
+            <i class="layui-icon layui-icon-username admin-icon"></i>
+            <input type="text" name="username" required lay-verify="required" placeholder="用户名" class="layui-input"
+                   autocomplete="off">
+        </div>
+        <div class="layui-input-inline">
+            <i class="layui-icon layui-icon-password admin-icon"></i>
+            <input type="password" name="password" required lay-verify="required" placeholder="密码" class="layui-input"
+                   autocomplete="off">
+        </div>
+        <div class="layui-input-inline login-btn">
+            <button lay-submit lay-filter="login" class="layui-btn">登录</button>
+        </div>
+    </form>
+    <script>
+        layui.use("form", function () {
+            var form = layui.form;
+            var $ = layui.$;
+            //监听提交
+            form.on("submit(login)", function (data) {
+                $.ajax({
+                    url: "/toLogin",
+                    type: "POST",
+                    data: data.field,
+                    dataType: "json",
+                    success: function (result) {
+                        if (result.code == "1") {
+                            layer.msg(result.msg, {icon: result.icon, anim: result.anim}, function () {
+                                location.href = "/index";    //登录成功，转向后台主页
+                            });
+                        } else {
+                            layer.msg(result.msg, {icon: result.icon, anim: result.anim});
+                        }
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
+</div>
+</body>
+</html>
