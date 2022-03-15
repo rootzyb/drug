@@ -46,7 +46,7 @@ public class SaleInfoController {
      */
     @RequestMapping(value = "/saleInfoPage")
     public String saleInfoPage(){
-        return "/saleInfoPage";
+        return "saleInfoPage";
     }
 
     /**
