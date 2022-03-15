@@ -47,7 +47,7 @@ public class DrugInfoController {
      */
     @RequestMapping(value = "/drugInfoPage")
     public String drugInfoPage() {
-        return "/drugInfoPage";
+        return "drugInfoPage";
     }
 
     /**
