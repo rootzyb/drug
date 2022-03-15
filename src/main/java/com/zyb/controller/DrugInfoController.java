@@ -25,7 +25,7 @@ public class DrugInfoController {
      */
     @RequestMapping
     public String drugInfo() {
-        return "/drugInfo";
+        return "drugInfo";
     }
 
     /**
@@ -71,7 +71,7 @@ public class DrugInfoController {
     public String drugInfoQueryById(@RequestParam(name = "id", required = true) Integer id, Model model) {
         DrugInfo druginfo = drugInfoService.queryDrugInfoById(id);
         model.addAttribute("obj", druginfo);
-        return "/drugInfoPage";
+        return "drugInfoPage";
     }
 
     /**
@@ -117,6 +117,6 @@ public class DrugInfoController {
      */
     @RequestMapping(value = "/warranty")
     public String warranty(){
-        return "/warranty";
+        return "warranty";
     }
 }

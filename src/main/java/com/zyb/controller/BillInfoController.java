@@ -46,7 +46,7 @@ public class BillInfoController {
      */
     @RequestMapping(value = "/billInfoPage")
     public String billInfoPage() {
-        return "/billInfoPage";
+        return "billInfoPage";
     }
 
     /**
@@ -70,7 +70,7 @@ public class BillInfoController {
     public String billInfoQueryById(@RequestParam(name = "id", required = true) Integer id, Model model) {
         BillInfo billinfo = billInfoService.queryBillInfoById(id);
         model.addAttribute("obj", billinfo);
-        return "/billInfoPage";
+        return "billInfoPage";
     }
 
     /**

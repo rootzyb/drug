@@ -46,7 +46,7 @@ public class ReturnGoodsController {
      */
     @RequestMapping(value = "/returnGoodsPage")
     public String returnGoodsPage() {
-        return "/returnGoodsPage";
+        return "returnGoodsPage";
     }
 
     /**
@@ -70,7 +70,7 @@ public class ReturnGoodsController {
     public String returnGoodsQueryById(@RequestParam(name = "id", required = true) Integer id, Model model) {
         ReturnGoods returngoods = returnGoodsService.queryReturnGoodsById(id);
         model.addAttribute("obj", returngoods);
-        return "/returnGoodsPage";
+        return "returnGoodsPage";
     }
 
     /**

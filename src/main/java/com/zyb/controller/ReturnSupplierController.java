@@ -43,7 +43,7 @@ public class ReturnSupplierController {
      */
     @RequestMapping(value = "/returnSupplierPage")
     public String returnsupplierPage() {
-        return "/returnSupplierPage";
+        return "returnSupplierPage";
     }
 
     /**
@@ -67,7 +67,7 @@ public class ReturnSupplierController {
     public String returnSupplierQueryById(@RequestParam(name = "id", required = true) Integer id, Model model) {
         ReturnSupplier returnsupplier = returnSupplierService.queryReturnSupplierById(id);
         model.addAttribute("obj", returnsupplier);
-        return "/returnSupplierPage";
+        return "returnSupplierPage";
     }
 
     /**

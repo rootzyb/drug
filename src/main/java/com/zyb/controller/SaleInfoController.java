@@ -70,7 +70,7 @@ public class SaleInfoController {
     public String saleInfoQueryById(@RequestParam(name = "id",required = true)Integer id, Model model){
         SaleInfo saleinfo = saleInfoService.querySaleInfoById(id);
         model.addAttribute("obj",saleinfo);
-        return "/saleInfoPage";
+        return "saleInfoPage";
     }
 
     /**
